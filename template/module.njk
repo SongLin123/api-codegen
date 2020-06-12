@@ -1,0 +1,10 @@
+/** {{data.desc}}*/
+const pre = '/{{ data.moduleName if data.serviceName else fileName}}'
+export default ({ request, requestForMock, mock, tools, moduleName }) => ({
+
+
+  {% for item in data.functions %}
+  {{ 'function.njk' | render(item) }}
+  {% endfor %}
+ 
+})

@@ -1,0 +1,24 @@
+{
+  "name": "codegen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "bin": {
+    "api-codegen": "./lib/cli.js"
+  },
+  "scripts": {
+    "test": "npm run build && api-codegen ./config.json",
+    "build": "babel src -d lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "nunjucks": "^3.2.1"
+  }
+}
