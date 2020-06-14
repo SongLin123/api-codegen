@@ -1,18 +1,21 @@
     /**
   * @description {{request.desc}}  {{request.type}} {{ request.fullpath}}
-  @param {{requestBody.type}} 
+  {# @param {{requestBody.type}} 
   {
     {% for item in requestBody.field %}
   {{ 'reqdesc.njk' | render(item) }}
   {% endfor %}
-  }
+  } #}
   */
-  {{ serviceName|upper}}_{{ moduleName| upper}}_{{ request.path| upper}}(data) {
+  {{ request.serviceName|upper}}_{{ request.moduleName| upper}}_{{ request.path| upper}}_{{request.type|upper}}({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/{{request.path}}{{request.query |queryor}}`,
-      method: '{{requestBody.type}}',
-      data:{{requestBody.body | dataor  }},
-      params:{{requestBody.params| dataor }},
+      url: `${moduleName + pre}/{{request.path}}{{requestBody.query |undefinedOR('path','')}}`,
+      method: '{{request.type}}',
+      headers:{'Content-Type':{{request.contenttype}},
+       ...header
+      },
+      data:body,
+      params:param,
     })
   },

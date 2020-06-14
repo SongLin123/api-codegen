@@ -1,16 +1,16 @@
 /*
  * @Date: 2020-06-11 16:59:40
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-12 14:00:23
- * @FilePath: \codegen\src\njk.js
+ * @LastEditTime: 2020-06-14 23:10:15
+ * @FilePath: \api-codegen\src\njk.js
  */
 import * as nunjucks from "nunjucks"
 import * as path from "path"
-import { writeFile, convertPath} from "./utils"
+import { writeFile, convertPath } from "./utils"
 
 export function createNjk(searchPaths, { autoescape = true, noCache = false, watch = false, throwOnUndefined = false }) {
     const env = new nunjucks.Environment(
-        new nunjucks.FileSystemLoader(path.resolve(__dirname,searchPaths), {
+        new nunjucks.FileSystemLoader(path.resolve(__dirname, searchPaths), {
             noCache: noCache,
             watch: watch,
         }), {
@@ -24,9 +24,9 @@ export function createNjk(searchPaths, { autoescape = true, noCache = false, wat
             return err.message
         }
     })
-    env.addFilter('dataor', function (tar) {
+    env.addFilter('undefinedOR', function (tar, res, or) {
         try {
-            return tar !== undefined ? 'data' :'undefined'
+            return tar !== undefined ? res : or
         } catch (err) {
             return err.message
         }
@@ -44,7 +44,7 @@ export function createNjk(searchPaths, { autoescape = true, noCache = false, wat
 export function fuckinTar(env) {
     return async function (temName, model, target) {
         const text = env.render(temName + '.njk', model)
-        const p = convertPath(target) 
+        const p = convertPath(target)
         await writeFile(path.resolve(p, ...model.dirName, model.fileName + '.js'), text)
     }
 }
