@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-11 16:59:40
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-14 23:10:15
+ * @LastEditTime: 2020-06-15 00:39:57
  * @FilePath: \api-codegen\src\njk.js
  */
 import * as nunjucks from "nunjucks"
@@ -24,16 +24,9 @@ export function createNjk(searchPaths, { autoescape = true, noCache = false, wat
             return err.message
         }
     })
-    env.addFilter('undefinedOR', function (tar, res, or) {
+    env.addFilter('OR', function (tar, res, or) {
         try {
-            return tar !== undefined ? res : or
-        } catch (err) {
-            return err.message
-        }
-    })
-    env.addFilter('queryor', function (tar) {
-        try {
-            return tar !== undefined ? '/${data}' : ''
+            return tar ? res : or
         } catch (err) {
             return err.message
         }

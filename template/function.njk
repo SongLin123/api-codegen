@@ -10,9 +10,9 @@
   {{ request.serviceName|upper}}_{{ request.moduleName| upper}}_{{ request.path| upper}}_{{request.type|upper}}({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/{{request.path}}{{requestBody.query |undefinedOR('path','')}}`,
+      url: `${moduleName + pre}/{{request.path}}{{requestBody.query |OR('/${path}','')}}`,
       method: '{{request.type}}',
-      headers:{'Content-Type':{{request.contenttype}},
+      headers:{'Content-Type':'{{request.contenttype}}',
        ...header
       },
       data:body,
