@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-05 17:57:47
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-15 11:45:02
+ * @LastEditTime: 2020-06-15 13:34:08
  * @FilePath: \codegen\src\index.js
  */
 
@@ -44,10 +44,11 @@ import _ from "lodash";
     const module = new Map()
     apijson.tags.forEach(item => {
         const functions = paths.filter(it => it.tags.includes(item.name)),
+            // 截取公共前缀
             moduleName = splitSep(longestCommonPrefix(functions.map(t => t.request.fullpath))),
             filename = moduleName[0],
             key = {
-                dirname: basePath.concat(moduleName),
+                dirname: basePath,
                 filename
             }
         functions.forEach(f => {
@@ -61,8 +62,6 @@ import _ from "lodash";
                 functions
             }
         }
-        console.log(val)
-
         module.set(key, val)
     })
     Array.from(module.keys()).forEach(key => {

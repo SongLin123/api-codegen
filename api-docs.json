@@ -11,7 +11,7 @@
         }
     },
     "host": "101.133.228.235",
-    "basePath": "/bussisnis",
+    "basePath": "/bus",
     "tags": [
         {
             "name": "设备管理",

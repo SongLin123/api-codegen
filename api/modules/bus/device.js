@@ -8,7 +8,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 新增设备  post /device/addDevice
   
   */
-  BUSSISNIS_DEVICE_ADDDEVICE_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_ADDDEVICE_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/addDevice`,
@@ -25,7 +25,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 修改设备状态  put /device/changeDeviceStatus
   
   */
-  BUSSISNIS_DEVICE_CHANGEDEVICESTATUS_PUT({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_CHANGEDEVICESTATUS_PUT({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/changeDeviceStatus`,
@@ -42,7 +42,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 删除设备  delete /device/deleteDevice/{deviceId}
   
   */
-  BUSSISNIS_DEVICE_DELETEDEVICE_DELETE({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_DELETEDEVICE_DELETE({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/deleteDevice/${path}`,
@@ -59,7 +59,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 批量删除设备  post /device/deleteDeviceBatch
   
   */
-  BUSSISNIS_DEVICE_DELETEDEVICEBATCH_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_DELETEDEVICEBATCH_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/deleteDeviceBatch`,
@@ -76,7 +76,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 获取考勤设备列表  get /device/getCheckInDevice
   
   */
-  BUSSISNIS_DEVICE_GETCHECKINDEVICE_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_GETCHECKINDEVICE_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/getCheckInDevice`,
@@ -93,7 +93,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 获取设备详情  get /device/getDeviceDetail/{deviceId}
   
   */
-  BUSSISNIS_DEVICE_GETDEVICEDETAIL_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_GETDEVICEDETAIL_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/getDeviceDetail/${path}`,
@@ -110,7 +110,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 查询设备列表  post /device/getDeviceList
   
   */
-  BUSSISNIS_DEVICE_GETDEVICELIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_GETDEVICELIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/getDeviceList`,
@@ -127,7 +127,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 获取nebula列表  post /device/getNebulaList
   
   */
-  BUSSISNIS_DEVICE_GETNEBULALIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_GETNEBULALIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/getNebulaList`,
@@ -144,7 +144,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 移动设备  put /device/moveDevice
   
   */
-  BUSSISNIS_DEVICE_MOVEDEVICE_PUT({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_MOVEDEVICE_PUT({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/moveDevice`,
@@ -161,7 +161,7 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 编辑设备  put /device/updateDevice
   
   */
-  BUSSISNIS_DEVICE_UPDATEDEVICE_PUT({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  BUS_DEVICE_UPDATEDEVICE_PUT({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/updateDevice`,
