@@ -1,5 +1,5 @@
 {
-  "name": "codegen",
+  "name": "songlin-api-codegen",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
