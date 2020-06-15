@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-05 17:57:47
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-15 10:56:10
+ * @LastEditTime: 2020-06-15 11:45:02
  * @FilePath: \codegen\src\index.js
  */
 
@@ -12,9 +12,10 @@ import _ from "lodash";
 
 (async function main() {
 
-    await removeTar()
     const { apijson, targetPath } = await readConf(),
         basePath = splitSep(apijson.basePath)
+    await removeTar(targetPath, ...basePath)
+
     renderIndex(basePath, {}, targetPath)
 
     const oldpaths = apijson.paths,

@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-11 14:11:52
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-15 11:27:52
+ * @LastEditTime: 2020-06-15 11:42:04
  * @FilePath: \codegen\src\utils.js
  */
 import * as fs from "fs-extra"
@@ -60,16 +60,16 @@ export async function readRemoteJson(remoteUrl) {
 
 }
 
-export async function removeTar() {
-    await fs.remove(path.resolve(__dirname, '../target'))
+export async function removeTar(...args) {
+    await fs.remove(convertPath(...args))
 }
 
 export function splitSep(path) {
     return path.split(/\//g).filter((item) => item !== '')
 }
 
-export function convertPath(tarpath) {
-    return path.resolve(process.cwd(), tarpath)
+export function convertPath(...args) {
+    return path.resolve(process.cwd(), ...args)
 }
 export function longestCommonPrefix(strs) {
     if (strs === null || strs.length === 0) {

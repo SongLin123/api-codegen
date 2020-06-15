@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-05 18:47:42
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-15 11:28:08
+ * @LastEditTime: 2020-06-15 11:37:41
  * @FilePath: \codegen\src\readConfig.js
  */
 // import * as fs from "fs";
@@ -24,7 +24,7 @@ export default async function () {
             const apiFile = convertPath(config.api)
             apijson = await readJson(apiFile)
         }
-        return { apijson, targetPath: config.targetPath }
+        return { apijson, targetPath: convertPath(config.targetPath) }
     } catch (error) {
         console.log(error)
         throw 'api必填'
