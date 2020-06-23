@@ -1,12 +1,13 @@
 /*
  * @Date: 2020-06-11 16:59:40
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-15 00:39:57
+ * @LastEditTime: 2020-06-23 08:41:18
  * @FilePath: \api-codegen\src\njk.js
  */
 import * as nunjucks from "nunjucks"
 import * as path from "path"
 import { writeFile, convertPath } from "./utils"
+import { isNumber } from "lodash";
 
 export function createNjk(searchPaths, { autoescape = true, noCache = false, watch = false, throwOnUndefined = false }) {
     const env = new nunjucks.Environment(
@@ -27,6 +28,17 @@ export function createNjk(searchPaths, { autoescape = true, noCache = false, wat
     env.addFilter('OR', function (tar, res, or) {
         try {
             return tar ? res : or
+        } catch (err) {
+            return err.message
+        }
+    })
+    env.addFilter('replace', function (tar) {
+        try {
+            if (isNumber(tar.charAt(0))) {
+                tar = '_' + tar
+            }
+            tar = tar.split(/\-/g).join('_')
+            return tar
         } catch (err) {
             return err.message
         }
