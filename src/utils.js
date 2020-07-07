@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-11 14:11:52
  * @LastEditors: songlin
- * @LastEditTime: 2020-06-15 11:42:04
+ * @LastEditTime: 2020-07-07 18:47:22
  * @FilePath: \codegen\src\utils.js
  */
 import * as fs from "fs-extra"
@@ -13,7 +13,7 @@ export const promisfy = (fn) => {
     }
 }
 export async function writeFile(filePath, text,) {
-    await fs.outputFile(filePath, text)
+    await fs.outputFileSync(filePath, text)
 }
 export async function readJson(filePath) {
     return await fs.readJson(path.resolve(filePath))
