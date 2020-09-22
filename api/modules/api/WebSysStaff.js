@@ -8,10 +8,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 新建用户  post /api/WebSysStaff/AddSysStaff
   
   */
-  API_WEBSYSSTAFF_WEBSYSSTAFF_ADDSYSSTAFF_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBSYSSTAFF_ADDSYSSTAFF_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebSysStaff_AddSysStaff`,
+      url: `${moduleName + pre}/AddSysStaff`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -25,10 +25,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 修改用户  post /api/WebSysStaff/UpdateSysStaff
   
   */
-  API_WEBSYSSTAFF_WEBSYSSTAFF_UPDATESYSSTAFF_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBSYSSTAFF_UPDATESYSSTAFF_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebSysStaff_UpdateSysStaff`,
+      url: `${moduleName + pre}/UpdateSysStaff`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -42,10 +42,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 删除用户信息  post /api/WebSysStaff/DelSysStaff
   
   */
-  API_WEBSYSSTAFF_WEBSYSSTAFF_DELSYSSTAFF_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBSYSSTAFF_DELSYSSTAFF_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebSysStaff_DelSysStaff`,
+      url: `${moduleName + pre}/DelSysStaff`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -59,10 +59,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 查询用户信息列表（分页）  post /api/WebSysStaff/GetSysStaffList
   
   */
-  API_WEBSYSSTAFF_WEBSYSSTAFF_GETSYSSTAFFLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBSYSSTAFF_GETSYSSTAFFLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebSysStaff_GetSysStaffList`,
+      url: `${moduleName + pre}/GetSysStaffList`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -76,10 +76,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 获取系统所有角色  post /api/WebSysStaff/GetRoleList
   
   */
-  API_WEBSYSSTAFF_WEBSYSSTAFF_GETROLELIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBSYSSTAFF_GETROLELIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebSysStaff_GetRoleList`,
+      url: `${moduleName + pre}/GetRoleList`,
       method: 'post',
       headers:{'Content-Type':'',
        ...header

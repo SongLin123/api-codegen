@@ -1,4 +1,4 @@
 {
-    "api": "./apidoc.json",
+    "api": "http://114.55.101.225:8998/swagger/docs/v1",
     "targetPath": "./api/modules/"
 }

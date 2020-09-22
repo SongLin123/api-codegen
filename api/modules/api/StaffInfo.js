@@ -8,10 +8,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 获取员工列表  post /api/StaffInfo/GetStaffInfoList
   
   */
-  API_STAFFINFO_STAFFINFO_GETSTAFFINFOLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_GETSTAFFINFOLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_GetStaffInfoList`,
+      url: `${moduleName + pre}/GetStaffInfoList`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -25,10 +25,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 根据身份证号，员工号查找员工信息  get /api/StaffInfo/StaffInfoIsExit
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOISEXIT_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOISEXIT_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoIsExit`,
+      url: `${moduleName + pre}/StaffInfoIsExit`,
       method: 'get',
       headers:{'Content-Type':'',
        ...header
@@ -42,10 +42,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 员工添加  post /api/StaffInfo/StaffInfoAdd
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOADD_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOADD_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoAdd`,
+      url: `${moduleName + pre}/StaffInfoAdd`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -59,10 +59,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 根据员工号查找员工编辑信息  get /api/StaffInfo/GetStaffInfoEditByEmpCode
   
   */
-  API_STAFFINFO_STAFFINFO_GETSTAFFINFOEDITBYEMPCODE_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_GETSTAFFINFOEDITBYEMPCODE_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_GetStaffInfoEditByEmpCode`,
+      url: `${moduleName + pre}/GetStaffInfoEditByEmpCode`,
       method: 'get',
       headers:{'Content-Type':'',
        ...header
@@ -76,10 +76,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 员工修改  post /api/StaffInfo/StaffInfoEdit
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOEDIT_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOEDIT_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoEdit`,
+      url: `${moduleName + pre}/StaffInfoEdit`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -93,10 +93,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 根据员工号查找 员工详细信息  get /api/StaffInfo/GetStaffInfoDetailByEmpCode
   
   */
-  API_STAFFINFO_STAFFINFO_GETSTAFFINFODETAILBYEMPCODE_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_GETSTAFFINFODETAILBYEMPCODE_GET({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_GetStaffInfoDetailByEmpCode`,
+      url: `${moduleName + pre}/GetStaffInfoDetailByEmpCode`,
       method: 'get',
       headers:{'Content-Type':'',
        ...header
@@ -110,10 +110,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 调岗  post /api/StaffInfo/StaffInfoTransferPosition
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOTRANSFERPOSITION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOTRANSFERPOSITION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoTransferPosition`,
+      url: `${moduleName + pre}/StaffInfoTransferPosition`,
       method: 'post',
       headers:{'Content-Type':'',
        ...header
@@ -127,10 +127,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 离职  post /api/StaffInfo/StaffInfoLeave
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOLEAVE_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOLEAVE_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoLeave`,
+      url: `${moduleName + pre}/StaffInfoLeave`,
       method: 'post',
       headers:{'Content-Type':'',
        ...header
@@ -144,10 +144,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 迁出/集团调动  post /api/StaffInfo/StaffInfoTransfer
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOTRANSFER_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOTRANSFER_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoTransfer`,
+      url: `${moduleName + pre}/StaffInfoTransfer`,
       method: 'post',
       headers:{'Content-Type':'',
        ...header
@@ -161,10 +161,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 获取 迁入迁出 列表  post /api/StaffInfo/GetStaffTransferHistoryList
   
   */
-  API_STAFFINFO_STAFFINFO_GETSTAFFTRANSFERHISTORYLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_GETSTAFFTRANSFERHISTORYLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_GetStaffTransferHistoryList`,
+      url: `${moduleName + pre}/GetStaffTransferHistoryList`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -178,10 +178,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 同意迁入  post /api/StaffInfo/StaffInfoTransferConfirm
   
   */
-  API_STAFFINFO_STAFFINFO_STAFFINFOTRANSFERCONFIRM_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_STAFFINFO_STAFFINFOTRANSFERCONFIRM_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/StaffInfo_StaffInfoTransferConfirm`,
+      url: `${moduleName + pre}/StaffInfoTransferConfirm`,
       method: 'post',
       headers:{'Content-Type':'',
        ...header

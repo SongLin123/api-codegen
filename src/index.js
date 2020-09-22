@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-05 17:57:47
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-09-22 10:50:29
+ * @LastEditTime: 2020-09-22 12:19:28
  * @FilePath: \codegen\src\index.js
  */
 
@@ -23,13 +23,22 @@ import _ from 'lodash'
             .keys()
             .map(type => {
               const func = inter[type]
+              let token
+              // 取出最后几位
+              if (/.+(?=\/\{.+\})/.test(item)) {
+                let base = item.match(/.+(?=\/\{.+\})/)[0]
+                token = base.split(/.*\//)[1]
+              } else {
+                token = item.split(/.*\//)[1]
+              }
+
               return {
                 tags: func.tags,
                 request: {
                   fullpath: item,
                   type,
                   desc: func.summary,
-                  path: func.operationId,
+                  path: token,
                   contenttype: func.consumes[0] // 一般接口只会有一个
                 },
                 // TODO 字段填写

@@ -8,10 +8,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 查询区域列表  post /api/WebRegion/GetRegionList
   
   */
-  API_WEBREGION_WEBREGION_GETREGIONLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBREGION_GETREGIONLIST_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebRegion_GetRegionList`,
+      url: `${moduleName + pre}/GetRegionList`,
       method: 'post',
       headers:{'Content-Type':'',
        ...header
@@ -25,10 +25,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 新增大区  post /api/WebRegion/AddPRegion
   
   */
-  API_WEBREGION_WEBREGION_ADDPREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBREGION_ADDPREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebRegion_AddPRegion`,
+      url: `${moduleName + pre}/AddPRegion`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -42,10 +42,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 新增小区  post /api/WebRegion/AddSRegion
   
   */
-  API_WEBREGION_WEBREGION_ADDSREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBREGION_ADDSREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebRegion_AddSRegion`,
+      url: `${moduleName + pre}/AddSRegion`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -59,10 +59,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 更新大区  post /api/WebRegion/UpdatePRegion
   
   */
-  API_WEBREGION_WEBREGION_UPDATEPREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBREGION_UPDATEPREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebRegion_UpdatePRegion`,
+      url: `${moduleName + pre}/UpdatePRegion`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
@@ -76,10 +76,10 @@ export default ({ request, requestForMock, mock, tools, moduleName }) => ({
   * @description 更新小区  post /api/WebRegion/UpdateSRegion
   
   */
-  API_WEBREGION_WEBREGION_UPDATESREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  API_WEBREGION_UPDATESREGION_POST({body=undefined,param=undefined,header=undefined,path=undefined}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/WebRegion_UpdateSRegion`,
+      url: `${moduleName + pre}/UpdateSRegion`,
       method: 'post',
       headers:{'Content-Type':'application/json',
        ...header
