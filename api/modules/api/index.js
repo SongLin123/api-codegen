@@ -1,7 +1,7 @@
 const files = require.context('./', false, /\.js$/)
 const apis = files.keys().filter((key) => !key.includes('index.js')).map(key => files(key).default)
 
-const moduleName = '/'
+const moduleName = '/api'
 
 export default ({
   request,

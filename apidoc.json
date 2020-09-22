@@ -1,0 +1,2713 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Lincoln.Api"
+    },
+    "host": "114.55.101.225:8998",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/Demo/Get": {
+            "get": {
+                "tags": [
+                    "Demo"
+                ],
+                "summary": "获取的注释",
+                "operationId": "Demo_Get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Demo/Get/{id}": {
+            "get": {
+                "tags": [
+                    "Demo"
+                ],
+                "operationId": "Demo_Get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Demo/Post": {
+            "post": {
+                "tags": [
+                    "Demo"
+                ],
+                "operationId": "Demo_Post",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "value",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/api/Demo/Put/{id}": {
+            "put": {
+                "tags": [
+                    "Demo"
+                ],
+                "operationId": "Demo_Put",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "value",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/api/Demo/Delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Demo"
+                ],
+                "operationId": "Demo_Delete",
+                "consumes": [],
+                "produces": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/api/JobPlan/QueryJobPlanList": {
+            "post": {
+                "tags": [
+                    "JobPlan"
+                ],
+                "summary": "查询人员岗位计划列表",
+                "operationId": "JobPlan_QueryJobPlanList",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "body",
+                        "description": "请求对象",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QueryJobPlanListRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel[PagedListResultModel[JobPlan]]"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/JobPlan/DownLoadJobPlanTemplate": {
+            "get": {
+                "tags": [
+                    "JobPlan"
+                ],
+                "summary": "下载人员岗位计划模板",
+                "operationId": "JobPlan_DownLoadJobPlanTemplate",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/JobPlan/UploadJobPlan": {
+            "post": {
+                "tags": [
+                    "JobPlan"
+                ],
+                "summary": "上传人员岗位计划",
+                "operationId": "JobPlan_UploadJobPlan",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/JobPlan/GetJobPlanLackDetail": {
+            "get": {
+                "tags": [
+                    "JobPlan"
+                ],
+                "summary": "获取人员岗位计划详情",
+                "operationId": "JobPlan_GetJobPlanLackDetail",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "dealerCode",
+                        "in": "query",
+                        "description": "经销商代码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel[JobPlanLackInfo]"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/JobPlan/GetJobPlanDetailList": {
+            "get": {
+                "tags": [
+                    "JobPlan"
+                ],
+                "summary": "获取人员岗位计划详情列表",
+                "operationId": "JobPlan_GetJobPlanDetailList",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "dealerCode",
+                        "in": "query",
+                        "description": "经销商代码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel[JobPlanArray]"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/JobPlan/DownLoadJobPlanListExcel": {
+            "get": {
+                "tags": [
+                    "JobPlan"
+                ],
+                "summary": "下载人员岗位计划详情Excel",
+                "operationId": "JobPlan_DownLoadJobPlanListExcel",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "dealerCode",
+                        "in": "query",
+                        "description": "经销商代码",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetJobStatus": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 在职状态 下拉列表",
+                "operationId": "Meta_GetJobStatus",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetFunction": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 入职路径 下拉列表",
+                "operationId": "Meta_GetFunction",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetEmployeeSource": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 人才来源 下拉列表",
+                "operationId": "Meta_GetEmployeeSource",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetIndustry": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 行业 下拉列表",
+                "operationId": "Meta_GetIndustry",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetFunctions": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 曾任职能 下拉列表",
+                "operationId": "Meta_GetFunctions",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetSysDepartment": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 部门 下拉列表",
+                "operationId": "Meta_GetSysDepartment",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetSysJob": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 部门下的岗位 下拉列表",
+                "operationId": "Meta_GetSysJob",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "SysDepartmentId",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetCarBrand": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 服务品牌 下拉列表",
+                "operationId": "Meta_GetCarBrand",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetCarSer": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 服务车系 下拉列表",
+                "operationId": "Meta_GetCarSer",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Meta/GetDealer": {
+            "post": {
+                "tags": [
+                    "Meta"
+                ],
+                "summary": "获取 集团下的 经销商 下拉列表",
+                "operationId": "Meta_GetDealer",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "DealerGroupId",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/GetStaffInfoList": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "获取员工列表",
+                "operationId": "StaffInfo_GetStaffInfoList",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StaffInfoQueryModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoIsExit": {
+            "get": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "根据身份证号，员工号查找员工信息",
+                "operationId": "StaffInfo_StaffInfoIsExit",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "IdCard",
+                        "in": "query",
+                        "description": "身份证号",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "EmpCode",
+                        "in": "query",
+                        "description": "员工号",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoAdd": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "员工添加",
+                "operationId": "StaffInfo_StaffInfoAdd",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Model",
+                        "in": "body",
+                        "description": "员工信息",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StaffInfoEditModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/GetStaffInfoEditByEmpCode": {
+            "get": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "根据员工号查找员工编辑信息",
+                "operationId": "StaffInfo_GetStaffInfoEditByEmpCode",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "EmpCode",
+                        "in": "query",
+                        "description": "员工号",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoEdit": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "员工修改",
+                "operationId": "StaffInfo_StaffInfoEdit",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Model",
+                        "in": "body",
+                        "description": "员工信息",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StaffInfoEditModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/GetStaffInfoDetailByEmpCode": {
+            "get": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "根据员工号查找 员工详细信息",
+                "operationId": "StaffInfo_GetStaffInfoDetailByEmpCode",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "EmpCode",
+                        "in": "query",
+                        "description": "员工号",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoTransferPosition": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "调岗",
+                "operationId": "StaffInfo_StaffInfoTransferPosition",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "StaffId",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "SysDepartmentId",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "SysJobId",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoLeave": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "离职",
+                "operationId": "StaffInfo_StaffInfoLeave",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "StaffId",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "LeaveDate",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "LeaveDesc",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoTransfer": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "迁出/集团调动",
+                "operationId": "StaffInfo_StaffInfoTransfer",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "StaffId",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "DealerCode",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/GetStaffTransferHistoryList": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "获取 迁入迁出 列表",
+                "operationId": "StaffInfo_GetStaffTransferHistoryList",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StaffTransferHistoryQueryModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfo/StaffInfoTransferConfirm": {
+            "post": {
+                "tags": [
+                    "StaffInfo"
+                ],
+                "summary": "同意迁入",
+                "operationId": "StaffInfo_StaffInfoTransferConfirm",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "TransferID",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "SysDepartmentId",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "SysJobId",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/StaffInfoAudit/GetStaffInfoAuditList": {
+            "post": {
+                "tags": [
+                    "StaffInfoAudit"
+                ],
+                "summary": "获取员工学院审核列表",
+                "operationId": "StaffInfoAudit_GetStaffInfoAuditList",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "model",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StaffInfoAuditQueryModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Swagger/Get": {
+            "get": {
+                "tags": [
+                    "Swagger"
+                ],
+                "operationId": "Swagger_Get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/SysStaff/AppLogin": {
+            "post": {
+                "tags": [
+                    "SysStaff"
+                ],
+                "summary": "用户登陆（App）",
+                "operationId": "SysStaff_AppLogin",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SysStaffRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/SysStaff/WebLogin": {
+            "post": {
+                "tags": [
+                    "SysStaff"
+                ],
+                "summary": "用户登陆(Web)",
+                "operationId": "SysStaff_WebLogin",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SysStaffRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/SysStaff/SendVerficationCode": {
+            "post": {
+                "tags": [
+                    "SysStaff"
+                ],
+                "summary": "发送验证码",
+                "operationId": "SysStaff_SendVerficationCode",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SendVerificationRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/SysStaff/UpdatePWDByEmail": {
+            "post": {
+                "tags": [
+                    "SysStaff"
+                ],
+                "summary": "更新登录密码",
+                "operationId": "SysStaff_UpdatePWDByEmail",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdatePWDByEmailRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebRegion/GetRegionList": {
+            "post": {
+                "tags": [
+                    "WebRegion"
+                ],
+                "summary": "查询区域列表",
+                "operationId": "WebRegion_GetRegionList",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebRegion/AddPRegion": {
+            "post": {
+                "tags": [
+                    "WebRegion"
+                ],
+                "summary": "新增大区",
+                "operationId": "WebRegion_AddPRegion",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AddRegionRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebRegion/AddSRegion": {
+            "post": {
+                "tags": [
+                    "WebRegion"
+                ],
+                "summary": "新增小区",
+                "operationId": "WebRegion_AddSRegion",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AddRegionRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebRegion/UpdatePRegion": {
+            "post": {
+                "tags": [
+                    "WebRegion"
+                ],
+                "summary": "更新大区",
+                "operationId": "WebRegion_UpdatePRegion",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateRegionRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebRegion/UpdateSRegion": {
+            "post": {
+                "tags": [
+                    "WebRegion"
+                ],
+                "summary": "更新小区",
+                "operationId": "WebRegion_UpdateSRegion",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateRegionRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebSysStaff/AddSysStaff": {
+            "post": {
+                "tags": [
+                    "WebSysStaff"
+                ],
+                "summary": "新建用户",
+                "operationId": "WebSysStaff_AddSysStaff",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AddSysStaffRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebSysStaff/UpdateSysStaff": {
+            "post": {
+                "tags": [
+                    "WebSysStaff"
+                ],
+                "summary": "修改用户",
+                "operationId": "WebSysStaff_UpdateSysStaff",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateSysStaffRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebSysStaff/DelSysStaff": {
+            "post": {
+                "tags": [
+                    "WebSysStaff"
+                ],
+                "summary": "删除用户信息",
+                "operationId": "WebSysStaff_DelSysStaff",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DelSysStaffRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebSysStaff/GetSysStaffList": {
+            "post": {
+                "tags": [
+                    "WebSysStaff"
+                ],
+                "summary": "查询用户信息列表（分页）",
+                "operationId": "WebSysStaff_GetSysStaffList",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "application/xml",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "param",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QuerySysStaffRequestModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/WebSysStaff/GetRoleList": {
+            "post": {
+                "tags": [
+                    "WebSysStaff"
+                ],
+                "summary": "获取系统所有角色",
+                "operationId": "WebSysStaff_GetRoleList",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResultModel"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "QueryJobPlanListRequestModel": {
+            "description": "查询人员岗位计划信息列表请求对象",
+            "type": "object",
+            "properties": {
+                "RegionCode": {
+                    "description": "大区编号:",
+                    "type": "string"
+                },
+                "CityID": {
+                    "format": "int32",
+                    "description": "城市编号:",
+                    "type": "integer"
+                },
+                "DealerCode": {
+                    "description": "经销商代码",
+                    "type": "string"
+                },
+                "DealerName": {
+                    "description": "经销商名称",
+                    "type": "string"
+                },
+                "DealerLevelCode": {
+                    "format": "int32",
+                    "description": "设施等级: 0 全部 1 A 2 B 3 C 4 D 5 E 6 城市展厅",
+                    "type": "integer"
+                },
+                "DealerStatusCode": {
+                    "format": "int32",
+                    "description": "认证状态: 0 全部 1 未认证 3 已认证",
+                    "type": "integer"
+                },
+                "GroupCode": {
+                    "description": "集团Code",
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "format": "int32",
+                    "description": "第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "description": "每月几条数据",
+                    "type": "integer"
+                }
+            }
+        },
+        "ApiResultModel[PagedListResultModel[JobPlan]]": {
+            "description": "接口返回结果类",
+            "type": "object",
+            "properties": {
+                "Entity": {
+                    "$ref": "#/definitions/PagedListResultModel[JobPlan]",
+                    "description": "类型实体"
+                },
+                "Code": {
+                    "description": "代码",
+                    "type": "string"
+                },
+                "Msg": {
+                    "description": "消息",
+                    "type": "string"
+                }
+            }
+        },
+        "PagedListResultModel[JobPlan]": {
+            "description": "分页列表结果模型",
+            "type": "object",
+            "properties": {
+                "List": {
+                    "description": "数据",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/JobPlan"
+                    }
+                },
+                "PageIndex": {
+                    "format": "int32",
+                    "description": "第几页",
+                    "type": "integer"
+                },
+                "PageSize": {
+                    "format": "int32",
+                    "description": "每页几条数据",
+                    "type": "integer"
+                },
+                "TotalCount": {
+                    "format": "int32",
+                    "description": "总共几条数据",
+                    "type": "integer"
+                }
+            }
+        },
+        "JobPlan": {
+            "description": "人员岗位计划信息列表项",
+            "type": "object",
+            "properties": {
+                "DealerCode": {
+                    "description": "经销商代码",
+                    "type": "string"
+                },
+                "DealerName": {
+                    "description": "经销商名称",
+                    "type": "string"
+                },
+                "RegionName": {
+                    "description": "大区名称",
+                    "type": "string"
+                },
+                "CityName": {
+                    "description": "城市名称",
+                    "type": "string"
+                },
+                "DealerLevel": {
+                    "description": "设施等级",
+                    "type": "string"
+                },
+                "DealerAuthStatus": {
+                    "description": "经销商认证状态",
+                    "type": "string"
+                },
+                "DealerAuthDateTime": {
+                    "description": "经销商认证时间",
+                    "type": "string"
+                },
+                "DealerAuditDemandCount": {
+                    "format": "int32",
+                    "description": "经销商稽核需求人数",
+                    "type": "integer"
+                },
+                "DealerAuditActCount": {
+                    "format": "int32",
+                    "description": "经销商稽核实际人数",
+                    "type": "integer"
+                },
+                "DealerAuditLackCount": {
+                    "format": "int32",
+                    "description": "经销商稽核缺岗人数",
+                    "type": "integer"
+                }
+            }
+        },
+        "ApiResultModel": {
+            "description": "接口返回结果",
+            "type": "object",
+            "properties": {
+                "Code": {
+                    "description": "代码",
+                    "type": "string"
+                },
+                "Msg": {
+                    "description": "消息",
+                    "type": "string"
+                }
+            }
+        },
+        "ApiResultModel[JobPlanLackInfo]": {
+            "description": "接口返回结果类",
+            "type": "object",
+            "properties": {
+                "Entity": {
+                    "$ref": "#/definitions/JobPlanLackInfo",
+                    "description": "类型实体"
+                },
+                "Code": {
+                    "description": "代码",
+                    "type": "string"
+                },
+                "Msg": {
+                    "description": "消息",
+                    "type": "string"
+                }
+            }
+        },
+        "JobPlanLackInfo": {
+            "description": "人员岗位计划详情",
+            "type": "object",
+            "properties": {
+                "DealerName": {
+                    "description": "经销商名称",
+                    "type": "string"
+                },
+                "DealerCode": {
+                    "description": "经销商代码",
+                    "type": "string"
+                },
+                "DealerRegionName": {
+                    "description": "大区名称",
+                    "type": "string"
+                },
+                "DealerCityName": {
+                    "description": "城市名称",
+                    "type": "string"
+                },
+                "DealerTypeName": {
+                    "description": "经销商类型",
+                    "type": "string"
+                },
+                "DealerLevelName": {
+                    "description": "经销商设施等级名称",
+                    "type": "string"
+                },
+                "DealerStatusName": {
+                    "description": "经销商认证状态名称",
+                    "type": "string"
+                },
+                "DealerAuthDate": {
+                    "description": "经销商认证日期",
+                    "type": "string"
+                },
+                "LackList": {
+                    "description": "缺岗信息列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/JobPlanLackInfoItem"
+                    }
+                }
+            }
+        },
+        "JobPlanLackInfoItem": {
+            "description": "经销商人员详情缺岗信息项",
+            "type": "object",
+            "properties": {
+                "JobName": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "LackNumber": {
+                    "format": "int32",
+                    "description": "缺岗人数",
+                    "type": "integer"
+                },
+                "LackDate": {
+                    "description": "缺岗日期",
+                    "type": "string"
+                }
+            }
+        },
+        "ApiResultModel[JobPlanArray]": {
+            "description": "接口返回结果类",
+            "type": "object",
+            "properties": {
+                "Entity": {
+                    "$ref": "#/definitions/JobPlanArray",
+                    "description": "类型实体"
+                },
+                "Code": {
+                    "description": "代码",
+                    "type": "string"
+                },
+                "Msg": {
+                    "description": "消息",
+                    "type": "string"
+                }
+            }
+        },
+        "JobPlanArray": {
+            "description": "人员岗位类型详情集合",
+            "type": "object",
+            "properties": {
+                "List": {
+                    "description": "列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/JobPlanArrayItem"
+                    }
+                }
+            }
+        },
+        "JobPlanArrayItem": {
+            "description": "岗位计划类型项",
+            "type": "object",
+            "properties": {
+                "Title": {
+                    "description": "岗位类型",
+                    "type": "string"
+                },
+                "List": {
+                    "description": "岗位项列表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/JobPlanArrayItemJob"
+                    }
+                },
+                "DemandNumberAccount": {
+                    "format": "int32",
+                    "description": "需求人数合计",
+                    "type": "integer"
+                },
+                "ActNumberAccount": {
+                    "format": "int32",
+                    "description": "实际人数合计",
+                    "type": "integer"
+                },
+                "LackNumberAccount": {
+                    "format": "int32",
+                    "description": "缺岗人数合计",
+                    "type": "integer"
+                }
+            }
+        },
+        "JobPlanArrayItemJob": {
+            "description": "岗位项",
+            "type": "object",
+            "properties": {
+                "JobName": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "Require": {
+                    "description": "是否必备",
+                    "type": "string"
+                },
+                "DemandNumber": {
+                    "format": "int32",
+                    "description": "需求人数",
+                    "type": "integer"
+                },
+                "ActNumber": {
+                    "format": "int32",
+                    "description": "实际人数",
+                    "type": "integer"
+                },
+                "LackNumber": {
+                    "format": "int32",
+                    "description": "人员缺口数",
+                    "type": "integer"
+                }
+            }
+        },
+        "StaffInfoQueryModel": {
+            "type": "object",
+            "properties": {
+                "AREA_NO": {
+                    "description": "大区",
+                    "type": "string"
+                },
+                "CITY_NO": {
+                    "type": "string"
+                },
+                "DEALER_CODE": {
+                    "type": "string"
+                },
+                "EMP_CODE": {
+                    "type": "string"
+                },
+                "EMP_NAME": {
+                    "type": "string"
+                },
+                "EMP_STATUS": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "SysDepartmentId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "SysJobId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "WorkDay": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "DEALERJOIN_DATE": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "LEAVE_DATE": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "format": "int32",
+                    "description": "第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "description": "每月几条数据",
+                    "type": "integer"
+                }
+            }
+        },
+        "StaffInfoEditModel": {
+            "type": "object",
+            "properties": {
+                "StaffInfo": {
+                    "$ref": "#/definitions/staff_info"
+                },
+                "WorkMonth": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "WorkDayLincoln": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "LsStaffJobFunHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/staff_jobfun_history"
+                    }
+                },
+                "LsStaffServicecarHistory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/staff_servicecar_history"
+                    }
+                }
+            }
+        },
+        "staff_info": {
+            "type": "object",
+            "properties": {
+                "STAFF_ID": {
+                    "description": "员工ID",
+                    "type": "string"
+                },
+                "ROOT_STAFF_ID": {
+                    "description": "原始员工ID",
+                    "type": "string"
+                },
+                "DEALER_ID": {
+                    "description": "经销商ID",
+                    "type": "string"
+                },
+                "STARTS_ID": {
+                    "description": "",
+                    "type": "string"
+                },
+                "EMP_CODE": {
+                    "description": "员工代码",
+                    "type": "string"
+                },
+                "EMP_NAME": {
+                    "description": "员工姓名",
+                    "type": "string"
+                },
+                "EMP_NAME_EN": {
+                    "description": "英文名",
+                    "type": "string"
+                },
+                "DEPARTMENT_ID": {
+                    "format": "int32",
+                    "description": "部门new",
+                    "type": "integer"
+                },
+                "POSITION_IDS": {
+                    "description": "岗位new",
+                    "type": "string"
+                },
+                "SEX": {
+                    "format": "int32",
+                    "description": "性别",
+                    "type": "integer"
+                },
+                "BIRTH_YEAR": {
+                    "format": "int32",
+                    "description": "出生年份",
+                    "type": "integer"
+                },
+                "REQ_NUM": {
+                    "format": "date-time",
+                    "description": "生日",
+                    "type": "string"
+                },
+                "POST_DESC": {
+                    "format": "int32",
+                    "description": "学历",
+                    "type": "integer"
+                },
+                "MOBILE_NO": {
+                    "description": "手机号",
+                    "type": "string"
+                },
+                "IDCARD": {
+                    "description": "身份证号new",
+                    "type": "string"
+                },
+                "EMAIL": {
+                    "description": "邮箱",
+                    "type": "string"
+                },
+                "JOIN_DATE": {
+                    "format": "date-time",
+                    "description": "林肯品牌入职日期",
+                    "type": "string"
+                },
+                "DEALERJOIN_DATE": {
+                    "format": "date-time",
+                    "description": "本店入职日期new",
+                    "type": "string"
+                },
+                "SOURCE": {
+                    "description": "人才来源",
+                    "type": "string"
+                },
+                "SOURCE_INDU_NAME": {
+                    "description": "行业",
+                    "type": "string"
+                },
+                "SOURCE_POS": {
+                    "description": "曾任职能",
+                    "type": "string"
+                },
+                "COMMENTS": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "EMP_STATUS": {
+                    "format": "int32",
+                    "description": "在职状态1.审批中2.在职3.离职4.审批未通过11.迁出中/调动中12.迁出成功/调动成功",
+                    "type": "integer"
+                },
+                "ENTER_TYPE": {
+                    "format": "int32",
+                    "description": "入职类型/岗位变动类型1.新入职2.调岗3.集团调动",
+                    "type": "integer"
+                },
+                "LEAVE_DATE": {
+                    "format": "date-time",
+                    "description": "离职日期",
+                    "type": "string"
+                },
+                "LEAVE_DESC": {
+                    "description": "离职原因",
+                    "type": "string"
+                },
+                "EvaluationMethod": {
+                    "format": "int32",
+                    "description": "岗位评估方式1.学院审核2.品牌面试3.AC测评4.经销商审核",
+                    "type": "integer"
+                },
+                "CREAT_BY": {
+                    "description": "",
+                    "type": "string"
+                },
+                "CREAT_DATE": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "CHNG_BY": {
+                    "description": "",
+                    "type": "string"
+                },
+                "CHNG_DATE": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "COMMENTS_JOBNAME": {
+                    "description": "",
+                    "type": "string"
+                },
+                "FILE_ID": {
+                    "description": "",
+                    "type": "string"
+                },
+                "FORCE_DATE": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "MAIN_JOB_FUN_ID": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "EXT_JOB_FUN_ID": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "STAFF_AUTH_FILE": {
+                    "description": "",
+                    "type": "string"
+                },
+                "INSTRUCTOR_TEAM": {
+                    "description": "讲师团队",
+                    "type": "string"
+                },
+                "INSTRUCTOR_TYPE": {
+                    "description": "讲师类型",
+                    "type": "string"
+                },
+                "INSTRUCTOR_STATUS": {
+                    "description": "讲师状态",
+                    "type": "string"
+                },
+                "CERTIFICATE": {
+                    "description": "",
+                    "type": "string"
+                },
+                "SUPPLIER": {
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "staff_jobfun_history": {
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "description": "",
+                    "type": "string"
+                },
+                "EMP_CODE": {
+                    "description": "",
+                    "type": "string"
+                },
+                "STAFF_ID": {
+                    "description": "员工ID",
+                    "type": "string"
+                },
+                "START_DATE": {
+                    "format": "date-time",
+                    "description": "开始日期",
+                    "type": "string"
+                },
+                "END_DATE": {
+                    "format": "date-time",
+                    "description": "结束日期",
+                    "type": "string"
+                },
+                "FORCE_DATE": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                },
+                "SYSJOB_ID": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "SYSDEPARTMENT_ID": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "JOB_FUN_ID": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "OLD_JOB_FUN_ID": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "CREAT_BY": {
+                    "description": "",
+                    "type": "string"
+                },
+                "CREAT_DATE": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "staff_servicecar_history": {
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "description": "",
+                    "type": "string"
+                },
+                "STAFF_ID": {
+                    "description": "",
+                    "type": "string"
+                },
+                "EMP_CODE": {
+                    "description": "",
+                    "type": "string"
+                },
+                "SERVICE_BRAND": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "SERVICE_CARSER": {
+                    "format": "int32",
+                    "description": "",
+                    "type": "integer"
+                },
+                "CREAT_BY": {
+                    "description": "",
+                    "type": "string"
+                },
+                "CREAT_DATE": {
+                    "format": "date-time",
+                    "description": "",
+                    "type": "string"
+                }
+            }
+        },
+        "StaffTransferHistoryQueryModel": {
+            "type": "object",
+            "properties": {
+                "DEALER_CODE": {
+                    "type": "string"
+                },
+                "EMP_CODE": {
+                    "type": "string"
+                },
+                "EMP_NAME": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "format": "int32",
+                    "description": "第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "description": "每月几条数据",
+                    "type": "integer"
+                }
+            }
+        },
+        "StaffInfoAuditQueryModel": {
+            "type": "object",
+            "properties": {
+                "AREA_NO": {
+                    "description": "大区",
+                    "type": "string"
+                },
+                "CITY_NO": {
+                    "type": "string"
+                },
+                "DEALER_GROUP": {
+                    "type": "string"
+                },
+                "DEALER_CODE": {
+                    "type": "string"
+                },
+                "DEALER_NAME": {
+                    "type": "string"
+                },
+                "EMP_CODE": {
+                    "type": "string"
+                },
+                "EMP_NAME": {
+                    "type": "string"
+                },
+                "JobName": {
+                    "type": "string"
+                },
+                "ENTER_TYPE": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "EMP_STATUS": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageIndex": {
+                    "format": "int32",
+                    "description": "第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "description": "每月几条数据",
+                    "type": "integer"
+                }
+            }
+        },
+        "SysStaffRequestModel": {
+            "description": "用户登录请求对象",
+            "type": "object",
+            "properties": {
+                "StaffNo": {
+                    "description": "账号",
+                    "type": "string"
+                },
+                "Pwd": {
+                    "description": "密码",
+                    "type": "string"
+                }
+            }
+        },
+        "SendVerificationRequestModel": {
+            "description": "发送验证码",
+            "type": "object",
+            "properties": {
+                "Email": {
+                    "description": "邮箱地址",
+                    "type": "string"
+                }
+            }
+        },
+        "UpdatePWDByEmailRequestModel": {
+            "description": "更新密码",
+            "type": "object",
+            "properties": {
+                "Email": {
+                    "description": "邮箱",
+                    "type": "string"
+                },
+                "VerificationCode": {
+                    "description": "验证码",
+                    "type": "string"
+                },
+                "PassWord": {
+                    "description": "新密码",
+                    "type": "string"
+                }
+            }
+        },
+        "AddRegionRequestModel": {
+            "description": "新增区域",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "format": "uuid",
+                    "description": "Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "PId": {
+                    "format": "uuid",
+                    "description": "父级Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "Name": {
+                    "description": "区域名称",
+                    "type": "string"
+                },
+                "Code": {
+                    "description": "区域编号",
+                    "type": "string"
+                },
+                "NDManagerName": {
+                    "description": "网发区域经理",
+                    "type": "string"
+                },
+                "NDManagerEmail": {
+                    "description": "网发区域经理邮箱",
+                    "type": "string"
+                },
+                "SAManagerName": {
+                    "description": "销售区域经理",
+                    "type": "string"
+                },
+                "SAManagerEmail": {
+                    "description": "销售区域经理邮箱",
+                    "type": "string"
+                },
+                "ASManagerName": {
+                    "description": "售后区域经理",
+                    "type": "string"
+                },
+                "ASManagerEmail": {
+                    "description": "售后区域经理邮箱",
+                    "type": "string"
+                },
+                "MAManagerName": {
+                    "description": "市场区域经理",
+                    "type": "string"
+                },
+                "MAManagerEmail": {
+                    "description": "市场区域经理邮箱",
+                    "type": "string"
+                },
+                "Remark": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "CreateUser": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdateRegionRequestModel": {
+            "description": "更新区域",
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "format": "uuid",
+                    "description": "区域Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "PId": {
+                    "format": "uuid",
+                    "description": "父级Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "Name": {
+                    "description": "区域名称",
+                    "type": "string"
+                },
+                "Code": {
+                    "description": "区域编号",
+                    "type": "string"
+                },
+                "NDManagerName": {
+                    "description": "网发区域经理",
+                    "type": "string"
+                },
+                "NDManagerEmail": {
+                    "description": "网发区域经理邮箱",
+                    "type": "string"
+                },
+                "SAManagerName": {
+                    "description": "销售区域经理",
+                    "type": "string"
+                },
+                "SAManagerEmail": {
+                    "description": "销售区域经理邮箱",
+                    "type": "string"
+                },
+                "ASManagerName": {
+                    "description": "售后区域经理",
+                    "type": "string"
+                },
+                "ASManagerEmail": {
+                    "description": "售后区域经理邮箱",
+                    "type": "string"
+                },
+                "MAManagerName": {
+                    "description": "市场区域经理",
+                    "type": "string"
+                },
+                "MAManagerEmail": {
+                    "description": "市场区域经理邮箱",
+                    "type": "string"
+                },
+                "Remark": {
+                    "description": "备注",
+                    "type": "string"
+                }
+            }
+        },
+        "AddSysStaffRequestModel": {
+            "description": "新增用户信息",
+            "type": "object",
+            "properties": {
+                "StaffNo": {
+                    "description": "用户编号",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "用户名称",
+                    "type": "string"
+                },
+                "Phone": {
+                    "description": "用户手机",
+                    "type": "string"
+                },
+                "Email": {
+                    "description": "用户邮箱",
+                    "type": "string"
+                },
+                "Status": {
+                    "format": "int32",
+                    "description": "状态",
+                    "type": "integer"
+                },
+                "RoleId": {
+                    "format": "int32",
+                    "description": "角色Id",
+                    "type": "integer"
+                },
+                "Password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "JobName": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "RegionType": {
+                    "format": "int32",
+                    "description": "区域类型",
+                    "type": "integer"
+                },
+                "PRegionId": {
+                    "format": "uuid",
+                    "description": "大区Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "SRegionId": {
+                    "format": "uuid",
+                    "description": "小区Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "Remark": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "CreateUser": {
+                    "type": "string"
+                }
+            }
+        },
+        "UpdateSysStaffRequestModel": {
+            "description": "更新用户信息",
+            "type": "object",
+            "properties": {
+                "StaffId": {
+                    "description": "用户Id",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "用户名称",
+                    "type": "string"
+                },
+                "Phone": {
+                    "description": "用户手机",
+                    "type": "string"
+                },
+                "Email": {
+                    "description": "用户邮箱",
+                    "type": "string"
+                },
+                "Status": {
+                    "format": "int32",
+                    "description": "状态",
+                    "type": "integer"
+                },
+                "RoleId": {
+                    "format": "int32",
+                    "description": "角色Id",
+                    "type": "integer"
+                },
+                "Password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "JobName": {
+                    "description": "岗位名称",
+                    "type": "string"
+                },
+                "RegionType": {
+                    "format": "int32",
+                    "description": "区域类型",
+                    "type": "integer"
+                },
+                "PRegionId": {
+                    "format": "uuid",
+                    "description": "大区Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "SRegionId": {
+                    "format": "uuid",
+                    "description": "小区Id",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "Remark": {
+                    "description": "备注",
+                    "type": "string"
+                }
+            }
+        },
+        "DelSysStaffRequestModel": {
+            "description": "删除用户信息",
+            "type": "object",
+            "properties": {
+                "StaffId": {
+                    "description": "用户Id",
+                    "type": "string"
+                }
+            }
+        },
+        "QuerySysStaffRequestModel": {
+            "description": "查询分页用户信息",
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "StaffNo": {
+                    "type": "string"
+                },
+                "Status": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "RoleId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "RegionType": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "PRegionId": {
+                    "format": "uuid",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "SRegionId": {
+                    "format": "uuid",
+                    "type": "string",
+                    "example": "00000000-0000-0000-0000-000000000000"
+                },
+                "pageIndex": {
+                    "format": "int32",
+                    "description": "第几页",
+                    "type": "integer"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "description": "每月几条数据",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

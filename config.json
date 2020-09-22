@@ -1,4 +1,4 @@
 {
-    "api": "./api-docs.json",
+    "api": "./apidoc.json",
     "targetPath": "./api/modules/"
 }
