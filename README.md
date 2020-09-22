@@ -11,7 +11,7 @@
 
 ## 使用
 ``` shell
-npm i -g songlin-api-swagger
+npm i -g songlin-api-codegen
 
 api-codegen ./config.json
 ```
