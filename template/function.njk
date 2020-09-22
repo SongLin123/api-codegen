@@ -7,7 +7,7 @@
   {% endfor %}
   } #}
   */
-  {{ request.serviceName| replace |upper}}_{{ request.moduleName| upper}}_{{ request.path| upper}}_{{request.type|upper}}({body=undefined,param=undefined,header=undefined,path=undefined}) {
+  {{ request.serviceName| replace |upper}}_{{ request.moduleName| upper}}_{{ request.path| upper}}_{{request.type|upper}}({body=undefined,param=undefined,header=undefined,path=undefined,config=undefined}) {
     // 接口请求
     return request({
       url: `${moduleName + pre}/{{request.path}}{{requestBody.query |OR('/${path}','')}}`,
@@ -17,5 +17,6 @@
       },
       data:body,
       params:param,
+      ...config
     })
   },
