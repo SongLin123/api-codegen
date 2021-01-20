@@ -1,0 +1,493 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "直播互动模块",
+    "version": "last"
+  },
+  "basePath": "/webrtc/weapp/webrtc_room",
+  "tags": [
+    {
+      "name": "公共分类",
+      "description": "公共分类"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/create_room": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "创建房间",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string"
+                },
+                "nickName": {
+                  "type": "string"
+                },
+                "roomInfo": {
+                  "type": "string"
+                },
+                "roomType": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "userID",
+                "roomInfo"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "roomID": {
+                  "type": "string"
+                },
+                "roomInfo": {
+                  "type": "string"
+                },
+                "privateMapKey": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "roomID",
+                "roomInfo",
+                "privateMapKey"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/heartbeat": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "心跳，当终端心跳超时后踢出房间",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string"
+                },
+                "roomID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "userID",
+                "roomID"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/get_login_info": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "获取sdkAppID、accountType、userID、userSig信息",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string",
+                  "description": "用户id，可为空，为空则随机分配"
+                }
+              },
+              "required": [
+                "userID"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "sdkAppID": {
+                  "type": "string"
+                },
+                "accountType": {
+                  "type": "string"
+                },
+                "userID": {
+                  "type": "string"
+                },
+                "userSig": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "sdkAppID",
+                "accountType",
+                "userID",
+                "userSig"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/get_room_list": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "获取webrtc房间列表",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "roomType": {
+                  "type": "string",
+                  "description": "请求加入的房间类型，可以为空"
+                }
+              },
+              "required": [
+                "index",
+                "count"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "rooms": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "roomID": {
+                        "type": "string",
+                        "description": "房间id"
+                      },
+                      "roomInfo": {
+                        "type": "string",
+                        "description": "房间名称"
+                      }
+                    },
+                    "required": [
+                      "roomID",
+                      "roomInfo"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "rooms"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/get_room_members": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "获取房间内成员列表",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "roomID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "roomID"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "members": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "userID": {
+                        "type": "string",
+                        "description": "用户id"
+                      },
+                      "nickName": {
+                        "type": "string",
+                        "description": "用户昵称"
+                      }
+                    },
+                    "required": [
+                      "userID",
+                      "nickName"
+                    ]
+                  },
+                  "description": "成员列表"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "members"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/enter_room": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "进入房间",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string"
+                },
+                "nickName": {
+                  "type": "string"
+                },
+                "roomID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "userID",
+                "roomID"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "userID": {
+                  "type": "string"
+                },
+                "roomID": {
+                  "type": "string"
+                },
+                "privateMapKey": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "userID",
+                "roomID",
+                "privateMapKey"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/quit_room": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "退出房间",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string"
+                },
+                "roomID": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "userID",
+                "roomID"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
