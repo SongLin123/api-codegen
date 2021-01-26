@@ -4,17 +4,91 @@
     "title": "直播互动模块",
     "version": "last"
   },
-  "basePath": "/webrtc/weapp/webrtc_room",
+  "basePath": "/roomservice/weapp",
   "tags": [
     {
       "name": "公共分类",
       "description": "公共分类"
+    },
+    {
+      "name": "直播房间管理",
+      "description": null
+    },
+    {
+      "name": "公共接口",
+      "description": null
     }
   ],
   "schemes": [
     "http"
   ],
   "paths": {
+    "/modify_room_member": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "修改群成员角色",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string",
+                  "description": "需要变更的userid"
+                },
+                "role": {
+                  "type": "string",
+                  "description": "Admin 管理员/ Member 普通用户"
+                },
+                "roomID": {
+                  "type": "string",
+                  "description": "房间Id：create_chatroom返回的roomid"
+                }
+              },
+              "required": [
+                "userID",
+                "roomID",
+                "role"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "status"
+              ]
+            }
+          }
+        }
+      }
+    },
     "/create_room": {
       "post": {
         "tags": [
@@ -83,6 +157,77 @@
                 "roomInfo",
                 "privateMapKey"
               ]
+            }
+          }
+        }
+      }
+    },
+    "/create_chatroom": {
+      "post": {
+        "tags": [
+          "公共分类"
+        ],
+        "summary": "创建聊天房间",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string",
+                  "description": "房间owner"
+                },
+                "userSig": {
+                  "type": "string",
+                  "description": "管理员的sig"
+                },
+                "nickName": {
+                  "type": "string"
+                },
+                "roomInfo": {
+                  "type": "string",
+                  "description": "房间名"
+                },
+                "roomType": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "roomInfo"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "roomID": {
+                  "type": "string"
+                },
+                "roomInfo": {
+                  "type": "string"
+                },
+                "privateMapKey": {
+                  "type": "string"
+                }
+              }
             }
           }
         }
@@ -483,6 +628,888 @@
               "required": [
                 "code",
                 "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/search_media": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "search_media",
+        "description": "```\nsearch_media查询直播的回看地址\n```",
+        "parameters": [
+          {
+            "name": "streamID",
+            "in": "query",
+            "required": false,
+            "description": "视频流ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "mediaUrl": {
+                  "type": "string",
+                  "description": "直播回看地址"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "mediaUrl"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/login": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "login",
+        "description": "```\nlogin 登录接口，校验im签名合法性并派发token，后续请求需要校验token\n```",
+        "parameters": [
+          {
+            "name": "sdkAppID",
+            "in": "query",
+            "required": false,
+            "description": "云通信的sdkAppID",
+            "type": "string"
+          },
+          {
+            "name": "accountType",
+            "in": "query",
+            "required": false,
+            "description": "云通信的accountType",
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "userSig",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "userID": {
+                  "type": "string",
+                  "description": "用户id"
+                },
+                "token": {
+                  "type": "string",
+                  "description": "登录成功后产生的token"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "userID",
+                "token"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/get_push_url": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "get_push_url",
+        "description": "```\nget_push_url 获取推流地址接口\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "pushURL": {
+                  "type": "string",
+                  "description": "推流地址"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "pushURL"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/create_room": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "create_room",
+        "description": "```\ncreate_room 创建直播房间\n（\n先创建im群\n再创建房间\n）\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomInfo",
+            "in": "query",
+            "required": false,
+            "description": "房间名称",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "roomID": {
+                  "type": "string",
+                  "description": "房间ID"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "roomID"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/destroy_room": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "destroy_room",
+        "description": "```\ndestroy_room 销毁直播房间\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/get_room_list": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "get_room_list",
+        "description": "```\ncreate_room 创建直播房间\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "登录成功后返回的token",
+            "type": "string"
+          },
+          {
+            "name": "cnt ",
+            "in": "query",
+            "required": false,
+            "description": "房间数量",
+            "type": "string"
+          },
+          {
+            "name": "index",
+            "in": "query",
+            "required": false,
+            "description": "起始下标",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "rooms": {
+                  "type": "object",
+                  "properties": {
+                    "roomID": {
+                      "type": "string",
+                      "description": "房间ID"
+                    },
+                    "roomInfo": {
+                      "type": "string",
+                      "description": "房间名称"
+                    },
+                    "roomCreator": {
+                      "type": "string",
+                      "description": "房间创建者userID"
+                    },
+                    "mixedPlayURL": {
+                      "type": "string",
+                      "description": "混流播放地址"
+                    },
+                    "pushers": {
+                      "type": "object",
+                      "properties": {
+                        "userID": {
+                          "type": "string",
+                          "description": "用户id"
+                        },
+                        "userName": {
+                          "type": "string",
+                          "description": "用户昵称"
+                        },
+                        "userAvatar": {
+                          "type": "string",
+                          "description": "用户头像"
+                        },
+                        "accelerateURL": {
+                          "type": "string",
+                          "description": "低延时播放地址"
+                        }
+                      },
+                      "description": "推流者列表",
+                      "required": [
+                        "userID",
+                        "userName",
+                        "userAvatar",
+                        "accelerateURL"
+                      ]
+                    }
+                  },
+                  "description": "房间ID",
+                  "required": [
+                    "roomID",
+                    "roomInfo",
+                    "roomCreator",
+                    "mixedPlayURL",
+                    "pushers"
+                  ]
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "rooms"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/add_pusher": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "add_pusher",
+        "description": "```\nadd_pusher 增加一个推流者\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          },
+          {
+            "name": "roomInfo",
+            "in": "query",
+            "required": false,
+            "description": "房间名称",
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "required": false,
+            "description": "用户名称",
+            "type": "string"
+          },
+          {
+            "name": "userAvatar",
+            "in": "query",
+            "required": false,
+            "description": "用户头像",
+            "type": "string"
+          },
+          {
+            "name": "pushURL",
+            "in": "query",
+            "required": false,
+            "description": "推流地址",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/delete_pusher": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "delete_pusher",
+        "description": "```\ndelete_pusher 删除一个推流者\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/merge_stream": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "merge_stream",
+        "description": "```\nmerge_stream 连麦混流接口\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          },
+          {
+            "name": "mergeParams",
+            "in": "query",
+            "required": false,
+            "description": "混流参数json格式字符串",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "result ": {
+                  "type": "string",
+                  "description": "混流结果"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "result "
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/add_audience": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "add_audience",
+        "description": "```\nadd_audience 增加一个观众\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          },
+          {
+            "name": "userInfo",
+            "in": "query",
+            "required": false,
+            "description": "观众信息",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/delete_audience": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "delete_audience",
+        "description": "```\ndelete_audience 删除一个观众\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                }
+              },
+              "required": [
+                "code",
+                "message"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/live_room/get_audiences": {
+      "get": {
+        "tags": [
+          "直播房间管理"
+        ],
+        "summary": "get_audiences",
+        "description": "```\nget_audiences 获取观众列表\n```",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "query",
+            "required": false,
+            "description": "userID",
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "description": "云通信派发的userSig",
+            "type": "string"
+          },
+          {
+            "name": "roomID",
+            "in": "query",
+            "required": false,
+            "description": "房间ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "audiences": {
+                  "type": "object",
+                  "properties": {
+                    "userID": {
+                      "type": "string",
+                      "description": "userID"
+                    },
+                    "userInfo": {
+                      "type": "string",
+                      "description": "用户信息"
+                    }
+                  },
+                  "required": [
+                    "userID",
+                    "userInfo"
+                  ]
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "audiences"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/utils/get_login_info": {
+      "post": {
+        "tags": [
+          "公共接口"
+        ],
+        "summary": "获取sdkAppID、userID、userSig信息",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "root",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "userID": {
+                  "type": "string",
+                  "description": "用户id，可为空，为空则随机分配"
+                }
+              },
+              "required": [
+                "userID"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "description": "返回码，0表示成功"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "描述信息"
+                },
+                "sdkAppID": {
+                  "type": "string",
+                  "description": "云通信的sdkAppID"
+                },
+                "accType": {
+                  "type": "string",
+                  "description": "云通信的accountType"
+                },
+                "userID": {
+                  "type": "string",
+                  "description": "用户id"
+                },
+                "userSig": {
+                  "type": "string",
+                  "description": "用户签名"
+                }
+              },
+              "required": [
+                "code",
+                "message",
+                "sdkAppID",
+                "accType",
+                "userID",
+                "userSig"
               ]
             }
           }

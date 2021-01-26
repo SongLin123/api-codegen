@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-05 17:57:47
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-09-22 12:19:28
+ * @LastEditors  : BillySong
+ * @LastEditTime : 2021-01-26 09:52:51
  * @FilePath: \codegen\src\index.js
  */
 
@@ -32,6 +32,7 @@ import _ from 'lodash'
                 token = item.split(/.*\//)[1]
               }
 
+              console.log(func.consumes, func)
               return {
                 tags: func.tags,
                 request: {
@@ -39,7 +40,7 @@ import _ from 'lodash'
                   type,
                   desc: func.summary,
                   path: token,
-                  contenttype: func.consumes[0] // 一般接口只会有一个
+                  contenttype: func.consumes?.[0] // 一般接口只会有一个
                 },
                 // TODO 字段填写
                 requestBody: {
