@@ -1,5 +1,11 @@
+{% if data.moduleName and fileName %}
+ {% set pre = '/'+fileName %}
+{% else %}
+ {% set pre = '' %}
+{% endif %}
+
 /** {{data.desc}}*/
-const pre = '/{{ data.moduleName if data.serviceName else fileName}}'
+const pre = '/{{ pre }}'
 export default ({ request, requestForMock, mock, tools, moduleName }) => ({
 
 

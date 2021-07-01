@@ -1,12 +1,14 @@
 /*
  * @Date: 2020-06-11 16:59:40
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-09-25 11:46:59
+ * @LastEditors  : BillySong
+ * @LastEditTime : 2021-07-01 11:01:05
  * @FilePath: \api-codegen\src\njk.js
  */
 import * as nunjucks from 'nunjucks'
 import * as path from 'path'
 import { writeFile, convertPath } from './utils'
+import * as fs from 'fs-extra'
+
 import { isNumber } from 'lodash'
 
 export function createNjk (
@@ -54,6 +56,33 @@ export function createNjk (
     }
   })
 
+  env.addGlobal('upper', function (tar) {
+    try {
+      return tar.toUpperCase()
+    } catch (err) {
+      return err.message
+    }
+  })
+
+  env.addGlobal('iterator', function (
+    tar,
+    func = t => t,
+    endConnector = '',
+    preConnector = ''
+  ) {
+    try {
+      let s = ''
+
+      for (const item of tar) {
+        s += preConnector + func(item) + endConnector
+      }
+      console.log(s)
+      return s
+    } catch (err) {
+      return err.message
+    }
+  })
+
   // TODO 兼容多path参数
   env.addFilter('routePar', function (tar) {
     try {
@@ -69,13 +98,14 @@ export function createNjk (
 
   return env
 }
-
 export function fuckinTar (env) {
   return async function (temName, model, target) {
     const text = env.render(temName + '.njk', model)
     const p = convertPath(target)
+
     await writeFile(
-      path.resolve(p, ...model.dirName, model.fileName + '.js'),
+      path.resolve(p, ...model.dirName),
+      model.fileName + '.js',
       text
     )
   }

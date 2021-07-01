@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-11 14:11:52
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-09-22 10:38:04
+ * @LastEditors  : BillySong
+ * @LastEditTime : 2021-07-01 10:44:11
  * @FilePath: \codegen\src\utils.js
  */
 import * as fs from 'fs-extra'
@@ -12,9 +12,21 @@ export const promisfy = fn => {
     return new Promise(res => res(fn(...args)))
   }
 }
-export async function writeFile (filePath, text) {
-  await fs.outputFileSync(filePath, text)
+export let uid = 0
+
+export function writeFile (dir, file, text) {
+  let filePath = path.resolve(dir, file)
+
+  if (fs.pathExistsSync(filePath)) {
+    console.log(path.resolve(dir, uid + file))
+    fs.outputFileSync(path.resolve(dir, uid + file), text, { flag: 'a+' })
+
+    uid++
+  } else {
+    fs.outputFileSync(filePath, text, { flag: 'a+' })
+  }
 }
+
 export async function readJson (filePath) {
   return await fs.readJson(path.resolve(filePath))
 }

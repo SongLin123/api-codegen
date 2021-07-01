@@ -1,16 +1,27 @@
-    /**
-  * @description {{request.desc}}  {{request.type}} {{ request.fullpath}}
-  {# @param {{requestBody.type}} 
+{% if request.moduleName %}
+  {% set r = request
+    .routes
+    .slice(1) %}
+{% else %}
+  {% set r = request.routes %}
+{% endif %}
+{% set funcRoute = iterator(request.routes, upper, '_') %}
+{% set urlRoute = iterator(r, undefined, '', '/') %}
+/**
+  * @description {{request.desc}}
+{{request.type}}
+{{ request.fullpath}}
+{# @param {{requestBody.type}} 
   {
     {% for item in requestBody.field %}
   {{ 'reqdesc.njk' | render(item) }}
   {% endfor %}
   } #}
   */
-  {{ request.serviceName| replace |upper}}_{{ request.moduleName| upper}}_{{ request.path| upper}}_{{request.type|upper}}({body=undefined,param=undefined,header=undefined,path=undefined,config=undefined}={}) {
+  {{ request.serviceName| replace |upper}}_{{ funcRoute }}{{request.type|upper}}({body=undefined,param=undefined,header=undefined,path=undefined,config=undefined}={}) {
     // 接口请求
     return request({
-      url: `${moduleName + pre}/{{request.path}}{{requestBody.query |OR('/${path}','')}}`,
+      url: `${moduleName + pre}{{urlRoute}}{{requestBody.query |OR('/${path}','')}}`,
       method: '{{request.type}}',
       headers:{'Content-Type':'{{request.contenttype}}',
        ...header

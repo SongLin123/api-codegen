@@ -1,4 +1,4 @@
 {
-    "api": "./swaggerApi.json",
+    "api": "./api-docs.json",
     "targetPath": "./api/modules/"
 }

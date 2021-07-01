@@ -1,16 +1,21 @@
 /*
  * @Date: 2020-06-05 17:57:47
  * @LastEditors  : BillySong
- * @LastEditTime : 2021-01-26 09:52:51
+ * @LastEditTime : 2021-07-01 11:01:46
  * @FilePath: \codegen\src\index.js
  */
 
 import readConf from './readConfig'
 import { removeTar, longestCommonPrefix, splitSep } from './utils'
-import { renderIndex, renderModule } from './render'
+import { renderIndex, renderModule, renderEntry } from './render'
 import _ from 'lodash'
 ;(async function main () {
-  const { apijson, targetPath } = await readConf()
+  const {
+    apijson,
+    targetPath,
+    hasEntryService,
+    entryServiceTargetPath
+  } = await readConf()
 
   const oldpaths = apijson.paths,
     // oldpars = apijson.definitions
@@ -31,8 +36,10 @@ import _ from 'lodash'
               } else {
                 token = item.split(/.*\//)[1]
               }
-
-              console.log(func.consumes, func)
+              let routes = item
+                .split('/')
+                .filter(t => (t.search(/\{/) ? t : ''))
+              console.log(routes)
               return {
                 tags: func.tags,
                 request: {
@@ -40,6 +47,7 @@ import _ from 'lodash'
                   type,
                   desc: func.summary,
                   path: token,
+                  routes,
                   contenttype: func.consumes?.[0] // 一般接口只会有一个
                 },
                 // TODO 字段填写
@@ -81,6 +89,7 @@ import _ from 'lodash'
     let moduleName = splitSep(
       longestCommonPrefix(functions.map(t => t.request.fullpath))
     )
+
     basePath = apijson.basePath
       ? splitSep(apijson.basePath)
       : moduleName.splice(0, 1)
@@ -107,7 +116,15 @@ import _ from 'lodash'
 
   renderIndex(basePath, {}, targetPath)
 
-  Array.from(module.keys()).forEach(key => {
-    renderModule(key.dirname, key.filename, module.get(key), targetPath)
+  Array.from(module.keys()).forEach(async key => {
+    await renderModule(key.dirname, key.filename, module.get(key), targetPath)
   })
+
+  if (hasEntryService) {
+    await removeTar(entryServiceTargetPath + 'index.js', ...basePath)
+    await removeTar(entryServiceTargetPath + 'service.js', ...basePath)
+    await removeTar(entryServiceTargetPath + 'tools.js', ...basePath)
+
+    renderEntry(entryServiceTargetPath)
+  }
 })()

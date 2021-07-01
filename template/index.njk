@@ -1,11 +1,7 @@
 const files = require.context('./', false, /\.js$/)
 const apis = files.keys().filter((key) => !key.includes('index.js')).map(key => files(key).default)
 {% set dash = joiner("/") %}
-{% if data.moduleName %}
-const moduleName = '/{{data.serviceName}}'
-{% else %}
-const moduleName = '/{% for item in dirName %}{{ dash() }}{% for items in item %}{{ items }}{% endfor %}{% endfor %}'
-{% endif %}
+const moduleName = '{% for item in dirName %}/{{item }}{% endfor %}'
 
 export default ({
   request,
